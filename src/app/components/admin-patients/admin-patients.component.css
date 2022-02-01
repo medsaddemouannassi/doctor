@@ -1,0 +1,7 @@
+.btn {
+  padding: inherit;
+}
+#accordion:hover {
+  color: #e12454 !important;
+  font-weight: bold;
+}

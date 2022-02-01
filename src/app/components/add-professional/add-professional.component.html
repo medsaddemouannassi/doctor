@@ -1,0 +1,178 @@
+<app-banner [title]="title" titleDescription="It will be satisfactory"></app-banner>
+<div class="section">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+            <div class="section-title">
+                <h2>It will be satisfactory</h2>
+                <div class="divider mx-auto my-4"></div>
+                <p>We provide a wide range of creative services adipisicing elit. Autem maxime rem modi eaque,
+                    voluptate.
+                    Beatae officiis neque </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-10 mx-auto mt-5 mb-5">
+        <div class="appoinment-wrap mt-5 mt-lg-0">
+            <!-- <h2 class="mb-2 title-color" style="text-align: center;">Sign Up as a professional</h2> -->
+            <form id="#" [formGroup]="signupProfessionalForm"
+                class="appoinment-form d-flex flex-column align-items-center" method="post" action="#">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <select class="form-control" formControlName="department" [(ngModel)]="doctor.department"
+                                style="font-size: 14px;" id="exampleFormControlSelect1">
+                                <option value="undefined">Choose Department</option>
+                                <option [value]="department" *ngFor="let department of departments"> {{department |
+                                    titlecase}} </option>
+                            </select>
+                            <div
+                                *ngIf="signupProfessionalForm.controls['department'].invalid && (signupProfessionalForm.controls['department'].touched || signupProfessionalForm.controls['department'].dirty)">
+                                <div class="error"
+                                    *ngIf="signupProfessionalForm.controls['department'].errors.required">You must
+                                    choose a department</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <fieldset>
+                                <h6>Select your work day(s) :</h6>
+                                <input type="checkbox" id="monday" (change)="onCheckboxChange($event)" value="monday">
+                                <label class="ml-1" for="monday">Mon</label>
+                                <input class="ml-3" type="checkbox" id="tuesday" (change)="onCheckboxChange($event)"
+                                    value="tuesday">
+                                <label class="ml-1" for="tuesday">Tue</label>
+                                <input class="ml-3" type="checkbox" id="wednesday" (change)="onCheckboxChange($event)"
+                                    value="wednesday">
+                                <label class="ml-1" for="wednesday">Wed</label>
+                                <input class="ml-3" type="checkbox" id="thursday" (change)="onCheckboxChange($event)"
+                                    value="thursday">
+                                <label class="ml-1" for="thursday">Thu</label>
+                                <input class="ml-3" type="checkbox" id="friday" (change)="onCheckboxChange($event)"
+                                    value="friday">
+                                <label class="ml-1" for="friday">Fri</label>
+                            </fieldset>
+                            <div
+                                *ngIf="signupProfessionalForm.controls['disponibility'].invalid && signupProfessionalForm.controls['disponibility'].touched">
+                                <div class="error"
+                                    *ngIf="signupProfessionalForm.controls['disponibility'].errors.required">You must
+                                    select your work day(s)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="firstName" id="firstName" formControlName="firstName"
+                                [(ngModel)]="doctor.firstName" type="text" class="form-control"
+                                placeholder="First Name">
+                            <div
+                                *ngIf="signupProfessionalForm.controls['firstName'].invalid && (signupProfessionalForm.controls['firstName'].touched || signupProfessionalForm.controls['firstName'].dirty)">
+                                <div class="error" *ngIf="signupProfessionalForm.controls['firstName'].errors.required">
+                                    Please enter your First Name</div>
+                                <div class="error"
+                                    *ngIf="signupProfessionalForm.controls['firstName'].errors.minlength">First Name
+                                    must have at least 3 chars</div>
+                                <div class="error"
+                                    *ngIf="signupProfessionalForm.controls['firstName'].errors.maxlength">First Name
+                                    must have at most 17 chars</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="lastName" id="lastName" formControlName="lastName"
+                                [(ngModel)]="doctor.lastName" type="text" class="form-control" placeholder="Last Name">
+                            <div
+                                *ngIf="signupProfessionalForm.controls['lastName'].invalid && (signupProfessionalForm.controls['lastName'].touched || signupProfessionalForm.controls['lastName'].dirty)">
+                                <div class="error" *ngIf="signupProfessionalForm.controls['lastName'].errors.required">
+                                    Please
+                                    enter your Last Name</div>
+                                <div class="error" *ngIf="signupProfessionalForm.controls['lastName'].errors.minlength">
+                                    Your
+                                    Last Name must have at least 3 chars</div>
+                                <div class="error" *ngIf="signupProfessionalForm.controls['lastName'].errors.maxlength">
+                                    Your
+                                    Last Name must have at most 17 chars</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="email" id="email" formControlName="email" [(ngModel)]="doctor.email"
+                                type="text" class="form-control" placeholder="E-mail">
+                            <div
+                                *ngIf="signupProfessionalForm.controls['email'].invalid && (signupProfessionalForm.controls['email'].touched || signupProfessionalForm.controls['email'].dirty)">
+                                <div class="error" *ngIf="signupProfessionalForm.controls['email'].errors.required">
+                                    Please
+                                    enter your E-mail</div>
+                                <div class="error" *ngIf="signupProfessionalForm.controls['email'].errors.email">E-mail
+                                    invalid</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="phone" id="phone" formControlName="phone" [(ngModel)]="doctor.phone" type="tel"
+                                class="form-control" placeholder="Phone Number">
+                            <div
+                                *ngIf="signupProfessionalForm.controls['phone'].invalid && (signupProfessionalForm.controls['phone'].touched || signupProfessionalForm.controls['phone'].dirty)">
+                                <div class="error" *ngIf="signupProfessionalForm.controls['phone'].errors.required">
+                                    Please
+                                    enter your Phone Number</div>
+                                <div class="error" *ngIf="signupProfessionalForm.controls['phone'].errors.pattern">Phone
+                                    Number invalid</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6" *ngIf="!doctorId">
+                        <div class="form-group">
+                            <input name="password" id="password" formControlName="password"
+                                [(ngModel)]="doctor.password" type="password" class="form-control"
+                                placeholder="Password">
+                            <div
+                                *ngIf="signupProfessionalForm.controls['password'].invalid && (signupProfessionalForm.controls['password'].touched || signupProfessionalForm.controls['password'].dirty)">
+                                <div class="error" *ngIf="signupProfessionalForm.controls['password'].errors.required">
+                                    Please
+                                    enter your Password</div>
+                                <div class="error" *ngIf="signupProfessionalForm.controls['password'].errors.minlength">
+                                    Your
+                                    Password must have at least 7 chars</div>
+                                <div class="error" *ngIf="signupProfessionalForm.controls['password'].errors.maxlength">
+                                    Your
+                                    Password must have at most 27 chars</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" *ngIf="!doctorId">
+                        <div class="form-group">
+                            <input name="confirmPassword" id="confirmPassword" formControlName="confirmPassword"
+                                [(ngModel)]="doctor.confirmPassword" type="password" class="form-control"
+                                placeholder="Confirm Password">
+                            <div
+                                *ngIf="signupProfessionalForm.controls['confirmPassword'].invalid && (signupProfessionalForm.controls['confirmPassword'].touched || signupProfessionalForm.controls['confirmPassword'].dirty)">
+                                <div class="error"
+                                    *ngIf="signupProfessionalForm.controls['confirmPassword'].errors.required">Please
+                                    re-enter your Password Password</div>
+                                <div class="error"
+                                    *ngIf="signupProfessionalForm.controls['confirmPassword'].errors.mustMatch">Password
+                                    &
+                                    Confirm Password doesn't match</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4 mx-auto d-flex flex-column align-items-center">
+                        <label style="cursor:pointer;" for="exampleInputAvatar"><i class="fas fa-images"></i>
+                            Profile Picture<input type="file" style="display: none;" class="form-control"
+                                (change)='onImageSelected($event)' id="exampleInputAvatar"></label>
+                        <img [src]="imagePreview" width="170px" height="170px" *ngIf="imagePreview">
+                    </div>
+                </div>
+
+                <button class="btn btn-main btn-round-full mt-3" (click)="addOrEditDoctor()">{{buttonText}} <i
+                        class="icofont-simple-right ml-2  "></i></button>
+            </form>
+        </div>
+    </div>
+</div>

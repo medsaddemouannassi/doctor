@@ -1,0 +1,35 @@
+<app-banner title="Dashboard" titleDescription="All Appointments"></app-banner>
+
+
+
+
+<div class="container mt-5 mb-5">
+    <section class="doctors" *ngIf="connectedUser?.role == 'admin'">
+        <div class="col-12 text-center">
+            <div class="btn-group btn-group-toggle nav nav-pills mb-3" data-toggle="buttons">
+                <button class="btn active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                    aria-controls="pills-home" aria-selected="true">Appointments <span> | </span> <i
+                    routerLink="/add-rdv" *ngIf="connectedUser?.role == 'admin'" class="fad fa-files-medical fa-lg" type="button"></i></button>
+                <button class="btn" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                    aria-controls="pills-profile" aria-selected="false">Patients <span> | </span> <i
+                        routerLink="/add-patient" class="fad fa-users-medical fa-lg" type="button"></i></button>
+                <button class="btn" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                    aria-controls="pills-contact" aria-selected="false">Doctors <span> | </span> <i routerLink="/add-professional" class="fad fa-user-nurse fa-lg" type="button"></i></button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <app-admin-appointments></app-admin-appointments>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <app-admin-patients></app-admin-patients>
+        </div>
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <app-admin-doctors></app-admin-doctors>
+        </div>
+    </div>
+</div>

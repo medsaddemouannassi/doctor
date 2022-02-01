@@ -1,0 +1,110 @@
+<app-banner *ngIf="!appointmentId" title="Appointment" titleDescription="Book your Seat"></app-banner>
+<app-banner *ngIf="page == 'display'" title="Appointment Info" titleDescription=""></app-banner>
+<app-banner *ngIf="page == 'edit'" title="Edit Appointment Info" titleDescription=""></app-banner>
+
+<section class="appoinment section">
+    <div class="container">
+        <div class="row">
+            <div *ngIf="!appointmentId" class="col-lg-4">
+                <div class="mt-3">
+                    <div class="feature-icon mb-3">
+                        <i class="icofont-support text-lg"></i>
+                    </div>
+                    <span class="h3">Call for an Emergency Service!</span>
+                    <h2 class="text-color mt-3">+84 789 1256 </h2>
+                </div>
+            </div>
+
+            <div class="col-lg-8 mx-auto">
+                <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
+                    <h2 class="mb-2 title-color">{{appointmentText}}</h2>
+                    <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit
+                        . Iste dolorum atque similique praesentium soluta.</p>
+                    <form id="#" #appointmentForm="ngForm" (ngSubmit)="makeOrEditAppointment()" class="appoinment-form"
+                        method="post" action="#">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <select class="form-control" [disabled]="page == 'display'" [(ngModel)]="appointment.department"
+                                        [ngModelOptions]="{standalone: true}" style="font-size: 14px;"
+                                        id="exampleFormControlSelect1" (change)="onDepartmentChange($event.target.value)">
+                                        <option value="undefined">Choose Department</option>
+                                        <option [value]="department" *ngFor="let department of departments"> {{department | titlecase}} </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <select class="form-control" [disabled]="page == 'display'" [(ngModel)]="appointment.doctorId"
+                                        [ngModelOptions]="{standalone: true}" style="font-size: 14px;"
+                                        id="exampleFormControlSelect2" (change)="onDoctorChange($event.target.value)">
+                                        <option value="undefined">Select Doctor</option>
+                                        <option [value]="doctor._id" *ngFor="let doctor of doctorsAccordingDepartment"> {{doctor.firstName}} {{doctor.lastName}} </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="container d-flex justify-content-around mb-2 mt-2">
+                                <h6 style="color: #223A66;">Disponibility: </h6>
+                                <h6 *ngFor="let day of days" [ngStyle]="{
+                                    'color': disponibilityDay(day)
+                                }"> {{day | titlecase}} </h6>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="date" id="date" [disabled]="page == 'display'" [(ngModel)]="appointment.date"
+                                        [ngModelOptions]="{standalone: true}" type="date" class="form-control"
+                                        placeholder="dd/mm/yyyy">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="time" id="time" [disabled]="page == 'display'" [(ngModel)]="appointment.time"
+                                        [ngModelOptions]="{standalone: true}" type="time" class="form-control"
+                                        placeholder="Time">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="firstName" id="firstName" [disabled]="page == 'display'" [(ngModel)]="appointment.firstName"
+                                        [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+                                        placeholder="First Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="lastName" id="lastName" [disabled]="page == 'display'" [(ngModel)]="appointment.lastName"
+                                        [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+                                        placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="email" id="email" [disabled]="page == 'display'" [(ngModel)]="appointment.email"
+                                        [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+                                        placeholder="E-mail">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="phone" id="phone" [disabled]="page == 'display'" [(ngModel)]="appointment.phone"
+                                        [ngModelOptions]="{standalone: true}" type="tel" class="form-control"
+                                        placeholder="Phone Number">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-2 mb-4">
+                            <textarea name="message" id="message" [disabled]="page == 'display'" [(ngModel)]="appointment.message"
+                                [ngModelOptions]="{standalone: true}" class="form-control" rows="6"
+                                placeholder="Your Message (Optional)"></textarea>
+                        </div>
+                        <button *ngIf="page != 'display'" class="btn btn-main btn-round-full">{{buttonText}} <i
+                                class="icofont-simple-right ml-2  "></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

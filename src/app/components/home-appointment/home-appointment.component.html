@@ -1,0 +1,159 @@
+<section class="section appoinment">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 ">
+                <div class="appoinment-content">
+                    <img src="assets/images/about/img-3.jpg" alt="" class="img-fluid">
+                    <div class="emergency">
+                        <h2 class="text-lg"><i class="icofont-phone-circle text-lg"></i>+23 345 67980</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-10 " id="appointment">
+                <div class="appoinment-wrap mt-5 mt-lg-0">
+                    <h2 class="mb-2 title-color">Book appoinment</h2>
+                    <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui
+                        velit . Iste dolorum atque similique praesentium soluta.</p>
+                    <form id="#" [formGroup]="appointmentForm" class="appoinment-form" method="post" action="#">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <select class="form-control" formControlName="department" style="font-size: 14px;"
+                                        id="exampleFormControlSelect1" (change)="onDepartmentChange($event.target.value)">
+                                        <option value="">Choose Department</option>
+                                        <option [value]="department" *ngFor="let department of departments"> {{department | titlecase}} </option>
+                                    </select>
+                                    <div
+                                        *ngIf="appointmentForm.controls['department'].invalid && (appointmentForm.controls['department'].touched || appointmentForm.controls['department'].dirty)">
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['department'].errors.required">You
+                                            must choose a department</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <select class="form-control" formControlName="doctorId" style="font-size: 14px;" id="exampleFormControlSelect2" (change)="onDoctorChange($event.target.value)">
+                                        <option value="">Select Doctor</option>
+                                        <option [value]="doctor._id" *ngFor="let doctor of doctorsAccordingDepartment"> {{doctor.firstName}} {{doctor.lastName}} </option>
+                                    </select>
+                                    <div
+                                        *ngIf="appointmentForm.controls['doctorId'].invalid && (appointmentForm.controls['doctorId'].touched || appointmentForm.controls['doctorId'].dirty)">
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['doctorId'].errors.required">You
+                                            must select a doctor</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container d-flex justify-content-around mb-2 mt-2">
+                                <h6 style="color: #223A66;">Disponibility: </h6>
+                                <h6 *ngFor="let day of days" [ngStyle]="{
+                                    'color': disponibilityDay(day)
+                                }"> {{day | titlecase}} </h6>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="date" id="date" formControlName="date" type="date" class="form-control"
+                                        placeholder="dd/mm/yyyy">
+                                        <div
+                                        *ngIf="appointmentForm.controls['date'].invalid && (appointmentForm.controls['date'].touched || appointmentForm.controls['date'].dirty)">
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['date'].errors.required">You
+                                            must choose date</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="time" id="time" formControlName="time" type="time" class="form-control" placeholder="Time">
+                                    <div
+                                        *ngIf="appointmentForm.controls['time'].invalid && (appointmentForm.controls['time'].touched || appointmentForm.controls['time'].dirty)">
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['time'].errors.required">You
+                                            must choose time</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="firstName" id="firstName" formControlName="firstName" type="text"
+                                        class="form-control" placeholder="First Name">
+                                    <div
+                                        *ngIf="appointmentForm.controls['firstName'].invalid && (appointmentForm.controls['firstName'].touched || appointmentForm.controls['firstName'].dirty)">
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['firstName'].errors.required">Please
+                                            enter your First Name</div>
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['firstName'].errors.minlength">First
+                                            Name must have at least 3 chars</div>
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['firstName'].errors.maxlength">First
+                                            Name must have at most 17 chars</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="lastName" id="lastName" formControlName="lastName" type="text"
+                                        class="form-control" placeholder="Last Name">
+                                    <div
+                                        *ngIf="appointmentForm.controls['lastName'].invalid && (appointmentForm.controls['lastName'].touched || appointmentForm.controls['lastName'].dirty)">
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['lastName'].errors.required">Please
+                                            enter your Last Name</div>
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['lastName'].errors.minlength">Your
+                                            Last Name must have at least 3 chars</div>
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['lastName'].errors.maxlength">Your
+                                            Last Name must have at most 17 chars</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="email" id="email" formControlName="email" type="text"
+                                        class="form-control" placeholder="E-mail">
+                                    <div
+                                        *ngIf="appointmentForm.controls['email'].invalid && (appointmentForm.controls['email'].touched || appointmentForm.controls['email'].dirty)">
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['email'].errors.required">Please
+                                            enter your E-mail</div>
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['email'].errors.email">E-mail
+                                            invalid</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input name="phone" id="phone" formControlName="phone" type="tel"
+                                        class="form-control" placeholder="Phone Number">
+                                    <div
+                                        *ngIf="appointmentForm.controls['phone'].invalid && (appointmentForm.controls['phone'].touched || appointmentForm.controls['phone'].dirty)">
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['phone'].errors.required">Please
+                                            enter your Phone Number</div>
+                                        <div class="error"
+                                            *ngIf="appointmentForm.controls['phone'].errors.pattern">Phone
+                                            Number invalid</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-2 mb-4">
+                            <textarea name="message" id="message" formControlName="message" class="form-control" rows="6"
+                                placeholder="Your Message (Optional)"></textarea>
+                        </div>
+                        <button class="btn btn-main btn-round-full"  (click)="makeAppointment()">Make Appoinment <i
+                                class="icofont-simple-right ml-2  "></i></button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,11 @@
+.btn,
+.btn-link {
+  padding: inherit;
+}
+td {
+  vertical-align: middle !important;
+}
+#accordion:hover {
+  color: #E12454 !important;
+  font-weight: bold;
+}

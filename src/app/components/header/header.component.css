@@ -1,0 +1,9 @@
+.nav-link{
+    padding: 0 !important;
+    margin: 10px 15px;
+}
+.active{
+    color: #E12454 !important;
+    text-decoration: underline 3px solid #E12454;
+    text-underline-offset: 7px;
+}

@@ -1,0 +1,32 @@
+<app-banner title="Find A Doctor" titleDescription=""></app-banner>
+<section class="section doctors">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 text-center">
+        <div class="section-title">
+          <h2>Doctors</h2>
+          <div class="divider mx-auto my-4"></div>
+          <p>We provide a wide range of creative services adipisicing elit. Autem maxime rem modi eaque, voluptate.
+            Beatae officiis neque </p>
+        </div>
+      </div>
+    </div>
+    <div class="row shuffle-wrapper portfolio-gallery">
+      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" *ngFor="let doctor of doctors"
+        data-groups="[&quot;cat1&quot;,&quot;cat2&quot;]">
+        <div class="position-relative doctor-inner-box">
+          <div class="doctor-profile">
+            <div class="doctor-img">
+              <img [src]="doctor.image" alt="doctor-image" class="img-fluid w-100">
+            </div>
+          </div>
+          <div class="content mt-3">
+            <h4 class="mb-0"><a style="cursor: pointer;" (click)="viewDoctorDetails(doctor.id)">{{doctor.firstName | titlecase}} {{doctor.lastName | titlecase}}</a></h4>
+            <p>{{doctor.department | titlecase}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="text-align: center;color: #E12454; font-size: 37px;" *ngIf="doctors?.length == 0">There is no result for {{input}}</div>
+</section>

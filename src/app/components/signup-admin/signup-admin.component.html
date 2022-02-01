@@ -1,0 +1,113 @@
+<app-banner title="Sign Up Admin" titleDescription="Join Us"></app-banner>
+<div class="section">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+            <div class="section-title">
+                <h2>Join Us</h2>
+                <div class="divider mx-auto my-4"></div>
+                <p>We provide a wide range of creative services adipisicing elit. Autem maxime rem modi eaque,
+                    voluptate.
+                    Beatae officiis neque </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-10 mx-auto mt-5 mb-5">
+        <div class="appoinment-wrap mt-lg-0">
+            <!-- <h2 class="mb-2 title-color" style="text-align: center;">Sign Up as a admin</h2> -->
+            <form id="#" [formGroup]="signupAdminForm" class="appoinment-form d-flex flex-column align-items-center">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="firstName" id="firstName" formControlName="firstName" type="text"
+                                class="form-control" placeholder="First Name">
+                            <div
+                                *ngIf="signupAdminForm.controls['firstName'].invalid && (signupAdminForm.controls['firstName'].touched || signupAdminForm.controls['firstName'].dirty)">
+                                <div class="error" *ngIf="signupAdminForm.controls['firstName'].errors.required">
+                                    Please enter your First Name</div>
+                                <div class="error" *ngIf="signupAdminForm.controls['firstName'].errors.minlength">Your
+                                    First Name must have at least 3 chars</div>
+                                <div class="error" *ngIf="signupAdminForm.controls['firstName'].errors.maxlength">Your
+                                    First Name must have at most 17 chars</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="lastName" id="lastName" formControlName="lastName" type="text"
+                                class="form-control" placeholder="Last Name">
+                            <div
+                                *ngIf="signupAdminForm.controls['lastName'].invalid && (signupAdminForm.controls['lastName'].touched || signupAdminForm.controls['lastName'].dirty)">
+                                <div class="error" *ngIf="signupAdminForm.controls['lastName'].errors.required">Please
+                                    enter your Last Name</div>
+                                <div class="error" *ngIf="signupAdminForm.controls['lastName'].errors.minlength">Your
+                                    Last Name must have at least 3 chars</div>
+                                <div class="error" *ngIf="signupAdminForm.controls['lastName'].errors.maxlength">Your
+                                    Last Name must have at most 17 chars</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="email" id="email" formControlName="email" type="text" class="form-control"
+                                placeholder="E-mail">
+                            <div
+                                *ngIf="signupAdminForm.controls['email'].invalid && (signupAdminForm.controls['email'].touched || signupAdminForm.controls['email'].dirty)">
+                                <div class="error" *ngIf="signupAdminForm.controls['email'].errors.required">Please
+                                    enter your E-mail</div>
+                                <div class="error" *ngIf="signupAdminForm.controls['email'].errors.email">E-mail
+                                    invalid</div>
+                            </div>
+                            <span style="color: #E12454;"> {{emailExistMsg}} </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="phone" id="phone" formControlName="phone" type="tel" class="form-control"
+                                placeholder="Phone Number">
+                            <div
+                                *ngIf="signupAdminForm.controls['phone'].invalid && (signupAdminForm.controls['phone'].touched || signupAdminForm.controls['phone'].dirty)">
+                                <div class="error" *ngIf="signupAdminForm.controls['phone'].errors.required">Please
+                                    enter your Phone Number</div>
+                                <div class="error" *ngIf="signupAdminForm.controls['phone'].errors.pattern">Phone
+                                    Number invalid</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="password" id="password" formControlName="password" type="password"
+                                class="form-control" placeholder="Password">
+                            <div
+                                *ngIf="signupAdminForm.controls['password'].invalid && (signupAdminForm.controls['password'].touched || signupAdminForm.controls['password'].dirty)">
+                                <div class="error" *ngIf="signupAdminForm.controls['password'].errors.required">Please
+                                    enter your Password</div>
+                                <div class="error" *ngIf="signupAdminForm.controls['password'].errors.minlength">Your
+                                    Password must have at least 7 chars</div>
+                                <div class="error" *ngIf="signupAdminForm.controls['password'].errors.maxlength">Your
+                                    Password must have at most 27 chars</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="confirmPassword" id="confirmPassword" formControlName="confirmPassword"
+                                type="password" class="form-control" placeholder="Confirm Password">
+                            <div
+                                *ngIf="signupAdminForm.controls['confirmPassword'].invalid && (signupAdminForm.controls['confirmPassword'].touched || signupAdminForm.controls['confirmPassword'].dirty)">
+                                <div class="error"
+                                    *ngIf="signupAdminForm.controls['confirmPassword'].errors.required">Please
+                                    re-enter your Password Password</div>
+                                <div class="error"
+                                    *ngIf="signupAdminForm.controls['confirmPassword'].errors.mustMatch">Password &
+                                    Confirm Password doesn't match</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-main btn-round-full mt-3" (click)="signupAdmin()">Sign Up <i
+                        class="icofont-simple-right ml-2  "></i></button>
+            </form>
+        </div>
+    </div>
+</div>

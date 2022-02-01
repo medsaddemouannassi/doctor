@@ -1,0 +1,113 @@
+<app-banner [title]="form" titleDescription="It will be satisfactory"></app-banner>
+<div class="section">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+            <div class="section-title">
+                <h2>It will be satisfactory</h2>
+                <div class="divider mx-auto my-4"></div>
+                <p>We provide a wide range of creative services adipisicing elit. Autem maxime rem modi eaque,
+                    voluptate.
+                    Beatae officiis neque </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-10 mx-auto mt-5 mb-5">
+        <div class="appoinment-wrap mt-lg-0">
+            <!-- <h2 class="mb-2 title-color" style="text-align: center;">Sign Up as a patient</h2> -->
+            <form id="#" [formGroup]="signupPatientForm" class="appoinment-form d-flex flex-column align-items-center"
+                method="post" action="#">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="firstName" id="firstName" [(ngModel)]="patient.firstName"  formControlName="firstName" type="text"
+                                class="form-control" placeholder="First Name">
+                            <div
+                                *ngIf="signupPatientForm.controls['firstName'].invalid && (signupPatientForm.controls['firstName'].touched || signupPatientForm.controls['firstName'].dirty)">
+                                <div class="error" *ngIf="signupPatientForm.controls['firstName'].errors.required">
+                                    Please enter your First Name</div>
+                                <div class="error" *ngIf="signupPatientForm.controls['firstName'].errors.minlength">Your
+                                    First Name must have at least 3 chars</div>
+                                <div class="error" *ngIf="signupPatientForm.controls['firstName'].errors.maxlength">Your
+                                    First Name must have at most 17 chars</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="lastName" id="lastName" [(ngModel)]="patient.lastName"  formControlName="lastName" type="text"
+                                class="form-control" placeholder="Last Name">
+                            <div
+                                *ngIf="signupPatientForm.controls['lastName'].invalid && (signupPatientForm.controls['lastName'].touched || signupPatientForm.controls['lastName'].dirty)">
+                                <div class="error" *ngIf="signupPatientForm.controls['lastName'].errors.required">Please
+                                    enter your Last Name</div>
+                                <div class="error" *ngIf="signupPatientForm.controls['lastName'].errors.minlength">Your
+                                    Last Name must have at least 3 chars</div>
+                                <div class="error" *ngIf="signupPatientForm.controls['lastName'].errors.maxlength">Your
+                                    Last Name must have at most 17 chars</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="email" id="email" [(ngModel)]="patient.email"  formControlName="email" type="text" class="form-control"
+                                placeholder="E-mail">
+                            <div
+                                *ngIf="signupPatientForm.controls['email'].invalid && (signupPatientForm.controls['email'].touched || signupPatientForm.controls['email'].dirty)">
+                                <div class="error" *ngIf="signupPatientForm.controls['email'].errors.required">Please
+                                    enter your E-mail</div>
+                                <div class="error" *ngIf="signupPatientForm.controls['email'].errors.email">E-mail
+                                    invalid</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input name="phone" id="phone" [(ngModel)]="patient.phone"  formControlName="phone" type="tel" class="form-control"
+                                placeholder="Phone Number">
+                            <div
+                                *ngIf="signupPatientForm.controls['phone'].invalid && (signupPatientForm.controls['phone'].touched || signupPatientForm.controls['phone'].dirty)">
+                                <div class="error" *ngIf="signupPatientForm.controls['phone'].errors.required">Please
+                                    enter your Phone Number</div>
+                                <div class="error" *ngIf="signupPatientForm.controls['phone'].errors.pattern">Phone
+                                    Number invalid</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" *ngIf="!patientId">
+                        <div class="form-group">
+                            <input name="password" id="password" [(ngModel)]="patient.password"  formControlName="password" type="password"
+                                class="form-control" placeholder="Password">
+                            <div
+                                *ngIf="signupPatientForm.controls['password'].invalid && (signupPatientForm.controls['password'].touched || signupPatientForm.controls['password'].dirty)">
+                                <div class="error" *ngIf="signupPatientForm.controls['password'].errors.required">Please
+                                    enter your Password</div>
+                                <div class="error" *ngIf="signupPatientForm.controls['password'].errors.minlength">Your
+                                    Password must have at least 7 chars</div>
+                                <div class="error" *ngIf="signupPatientForm.controls['password'].errors.maxlength">Your
+                                    Password must have at most 27 chars</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" *ngIf="!patientId">
+                        <div class="form-group">
+                            <input name="confirmPassword" id="confirmPassword" [(ngModel)]="patient.confirmPassword"  formControlName="confirmPassword"
+                                type="password" class="form-control" placeholder="Confirm Password">
+                            <div
+                                *ngIf="signupPatientForm.controls['confirmPassword'].invalid && (signupPatientForm.controls['confirmPassword'].touched || signupPatientForm.controls['confirmPassword'].dirty)">
+                                <div class="error"
+                                    *ngIf="signupPatientForm.controls['confirmPassword'].errors.required">Please
+                                    re-enter your Password Password</div>
+                                <div class="error"
+                                    *ngIf="signupPatientForm.controls['confirmPassword'].errors.mustMatch">Password &
+                                    Confirm Password doesn't match</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-main btn-round-full mt-3" *ngIf="page != 'display'" (click)="addOrEditPatient()">{{form}} <i
+                        class="icofont-simple-right ml-2  "></i></button>
+            </form>
+        </div>
+    </div>
+</div>
